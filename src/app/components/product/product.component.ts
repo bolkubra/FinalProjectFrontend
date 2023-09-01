@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Products } from 'src/app/models/product';
-import {HttpClient} from '@angular/common/http';
+
 import { ProductResponseModel } from 'src/app/models/productResponseModel';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -12,22 +13,31 @@ export class ProductComponent implements OnInit{
 
 
   products:Products[] = []
-  apiUrl = "https://localhost:44358/api/products/getall";
+  dataLoaded = false;
+ 
   /*productResponseModel:ProductResponseModel={ // meplemek istediğimiz datanın kendisi
     data:this.products,
     message:"",
     success:true
   }*/
-  constructor(private htppClient:HttpClient){} // amacı productcomponent için bellekte yer tutmaktır.
+  constructor(private productService:ProductService){} // amacı productcomponent için bellekte yer tutmaktır.
+
   ngOnInit(): void {
     this.getProducts();
   }
 
+  
   //JavaScript
   getProducts(){
-    this.htppClient.get<ProductResponseModel>(this.apiUrl).subscribe((response)=>{
-
+    /*this.htppClient.get<ProductResponseModel>(this.apiUrl).subscribe((response)=>{
+      //genel kuralları buraya yazarız 
       this.products=response.data
-    }) ; // <> gelen datayı responsemodele göre mep edeceksin demek
+      }) ; // <> gelen datayı responsemodele göre mep edeceksin demek
+    }*/
+
+    this.productService.getProducts().subscribe(response=>{
+      this.products=response.data
+      this.dataLoaded=true;
+    })
   }
 }
