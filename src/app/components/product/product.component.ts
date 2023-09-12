@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Products } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -18,10 +19,18 @@ export class ProductComponent implements OnInit{
     message:"",
     success:true
   }*/
-  constructor(private productService:ProductService){} // amacı productcomponent için bellekte yer tutmaktır.
+  constructor(private productService:ProductService,
+  private activedRoute : ActivatedRoute){} // amacı productcomponent için bellekte yer tutmaktır.
 
   ngOnInit(): void {
-    this.getProducts();
+   this.activedRoute.params.subscribe(params=>{
+    if(params["categoryId"]){
+      this.getProductsByCategory(params["categoryId"])
+    }
+    else{
+       this.getProducts()
+    }
+   })
   }
 
   
@@ -34,6 +43,13 @@ export class ProductComponent implements OnInit{
     }*/
 
     this.productService.getProducts().subscribe(response=>{
+      this.products=response.data
+      this.dataLoaded=true;
+    })
+  }
+
+  getProductsByCategory(categoryId:number){
+    this.productService.getProductsByCategory(categoryId).subscribe(response=>{
       this.products=response.data
       this.dataLoaded=true;
     })
