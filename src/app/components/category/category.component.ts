@@ -10,6 +10,7 @@ import { CatgeoryService } from 'src/app/services/category.service';
 export class CategoryComponent implements OnInit{
 
   categories : Category[]=[];
+  currentCategory : Category;
   constructor (private CategoryService : CatgeoryService) {}
 
   ngOnInit (): void {
@@ -22,6 +23,19 @@ export class CategoryComponent implements OnInit{
       this.categories=response.data
       
     })
+  }
+
+  setCurrentCategory(category:Category){
+    this.currentCategory=category;  
+  }
+  getCurrentCategoryCalss(categories:Category){
+    if(categories==this.currentCategory)
+    {
+      return "list-group-item active"
+    }
+    else
+    return "list-group-item "
+
   }
 
 }
