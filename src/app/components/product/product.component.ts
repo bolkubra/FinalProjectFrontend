@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit{
 
   products:Products[] = []
   dataLoaded = false;
+  filterText = "";
  
   /*productResponseModel:ProductResponseModel={ // meplemek istediğimiz datanın kendisi
     data:this.products,
