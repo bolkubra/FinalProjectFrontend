@@ -55,4 +55,8 @@ export class ProductComponent implements OnInit{
       this.dataLoaded=true;
     })
   }
+
+  addToCart(product:Products){
+    console.log(product)
+  }
 }
