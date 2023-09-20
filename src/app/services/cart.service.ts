@@ -12,7 +12,7 @@ export class CartService {
   constructor() { }
 
   addToCart(product:Products){
-    let item = CartItems.find(c=>product.productId===product.productId);
+    let item = CartItems.find(c=>c.product.productId===product.productId);
     if (item) {
       item.quantity+=1;
     }
