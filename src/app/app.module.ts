@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterpipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 
 @NgModule({
   declarations: [ // bizim yazdığımız componentler buraya ekleniyor
@@ -22,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
     NaviComponent,
     VatAddedPipe,
     FilterpipePipe,
+    CartSummaryComponent,
    
   ],
   imports: [
