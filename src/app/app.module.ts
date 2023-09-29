@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http'; // apiye istekte bulunabilmek için bu modülün olması gerekiyor
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,11 +10,11 @@ import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
-import { FormsModule } from '@angular/forms';
 import { FilterpipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { ProductAddComponent } from './components/product-add/product-add.component';
 
 @NgModule({
   declarations: [ // bizim yazdığımız componentler buraya ekleniyor
@@ -24,6 +25,7 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     VatAddedPipe,
     FilterpipePipe,
     CartSummaryComponent,
+    ProductAddComponent,
    
   ],
   imports: [
@@ -31,6 +33,7 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     AppRoutingModule,
     HttpClientModule, // dışardan gelen modülleri importa koyuyoruz
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({ // bir obje 
       positionClass :"toast-bottom-right" // ekranın neresinde görüntülenecğini bildirir
