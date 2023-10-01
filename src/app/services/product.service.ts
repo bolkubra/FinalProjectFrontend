@@ -21,4 +21,8 @@ export class ProductService {
     let newPath = this.apiUrl + "products/getbycategory?categoryId="+categoryId
     return this.htppClient.get<ListResponseModel<Products>>(newPath)
   }
+
+  add (product:Products){
+    return this.htppClient.post(this.apiUrl+"products/add",product) // hangi adrese ne göndereyim?
+  }
 }
