@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Products } from '../models/product';
+import { ResponseModel } from '../models/responseModel';
 import { ListResponseModel } from '../models/ListResponseModel';
 
 @Injectable({
@@ -22,7 +23,7 @@ export class ProductService {
     return this.htppClient.get<ListResponseModel<Products>>(newPath)
   }
 
-  add (product:Products){
-    return this.htppClient.post(this.apiUrl+"products/add",product) // hangi adrese ne göndereyim?
+  add (product:Products):Observable<ResponseModel>{
+    return this.htppClient.post<ResponseModel>(this.apiUrl+"products/add",product) // hangi adrese ne göndereyim?
   }
 }
