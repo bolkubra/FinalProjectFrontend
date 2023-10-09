@@ -31,6 +31,7 @@ export class ProductAddComponent implements OnInit {
   }
 
   add(){
+
     if(this.productAddForm.valid){
       let productModel = Object.assign({},this.productAddForm.value)
       this.productService.add(productModel).subscribe(response=>{
@@ -43,6 +44,9 @@ export class ProductAddComponent implements OnInit {
           }       
         } 
       })
+
+      
+      
       
     }else{
       this.toastrService.error("Formunuz eksik","Dikkat")
