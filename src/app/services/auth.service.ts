@@ -18,7 +18,7 @@ export class AuthService {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"login",loginModel)
   }
   isAuthenticated(){ // API'nın hafızasında tutmak için
-    if(localStorage.getItem("teken")){
+    if(localStorage.getItem("token")){
       return true;
     }
     else{
